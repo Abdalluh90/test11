@@ -1,0 +1,335 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #878ac3;
+    color: rgb(0, 0, 0);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Dark Mode */
+body.dark-mode {
+    background-color: #121212;
+    color: white;
+}
+
+body.dark-mode .navbar {
+    background-color: #1e1e1e;
+}
+
+body.dark-mode .nav-links a {
+    color: white;
+}
+
+body.dark-mode .nav-links a:hover {
+    background-color: #ffcc00;
+    color: black;
+}
+
+body.dark-mode .hero::before {
+    background: rgba(0, 0, 0, 0.7);
+}
+
+body.dark-mode .podcast-item {
+    background-color: #2c2c2c;
+}
+
+body.dark-mode .listen-btn {
+    background-color: #ffcc00;
+    color: black;
+}
+
+body.dark-mode .listen-btn:hover {
+    background-color: #e6b800;
+}
+
+body.dark-mode footer {
+    background-color: #1e1e1e;
+}
+
+body.dark-mode footer a {
+    color: #ffcc00;
+}
+
+/* Navbar Styles */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background-color: transparent;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.navbar.scrolled {
+    background-color: rgba(51, 51, 51, 0.9);
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+}
+
+.nav-links {
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+    font-size: 18px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.nav-links a:hover {
+    background-color: #ffcc00;
+    color: black;
+    border-radius: 5px;
+}
+
+/* Hamburger Menu for Small Screens */
+.hamburger {
+    display: none;
+    font-size: 24px;
+    color: white;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .hamburger {
+        display: block;
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        background-color: rgba(51, 51, 51, 0.9);
+        position: absolute;
+        top: 60px;
+        right: 0;
+        width: 200px;
+        padding: 10px;
+        border-radius: 5px;
+        z-index: 1000;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-10px);
+        transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+    }
+
+    .nav-links.active {
+        display: flex;
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+    .nav-links a {
+        padding: 10px;
+        text-align: center;
+    }
+}
+
+/* Hero Section */
+.hero {
+    position: relative;
+    text-align: center;
+    color: rgb(239, 233, 245);
+    overflow: hidden;
+    height: 100vh; /* Full-screen height */
+}
+
+#welcome-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    z-index: -1;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8));
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 100px 20px;
+}
+
+.hero h1 {
+    font-size: 48px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 20px;
+    margin-bottom: 30px;
+}
+
+/* Search Bar */
+.search-bar {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.search-bar input {
+    padding: 12px;
+    width: 300px;
+    max-width: 100%;
+    border: 2px solid #ffcc00;
+    border-radius: 25px 0 0 25px;
+    outline: none;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+}
+
+.search-bar input:focus {
+    border-color: #e6b800;
+}
+
+.search-bar button { /* لون search bar */
+    padding: 12px 20px;
+    background-color: #ffcc00;
+    color: black;
+    border: none;
+    border-radius: 0 25px 25px 0;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.search-bar button:hover { /*لون search bar */
+    background-color: #e6b800;
+}
+
+/* CTA Button */
+.cta-btn { /* لون الزر الاصفر */
+    background-color: #ffcc00;
+    color: black;
+    padding: 12px 20px;
+    font-size: 18px;
+    text-decoration: none;
+    border-radius: 25px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cta-btn:hover { /* لون الزر الاصفر */
+    transform: scale(1.1);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+}
+
+/* Podcast Section */
+.podcast-section {
+    text-align: center;
+    padding: 50px 20px;
+}
+.podcast-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    max-width: 1200px;
+    margin: auto;
+}
+.podcast-item { /* لون البودكاست */
+    background-color: rgb(228, 227, 240);
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #eaebece4;
+    transition: transform 0.3s;
+}
+.podcast-item:hover {
+    transform: scale(1.05);
+}
+.podcast-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+.listen-btn {  /* لون الوان الاستماع */
+    display: inline-block;
+    background-color: #00000044;
+    color: rgb(0, 0, 0);
+    padding: 12px 20px;
+    font-size: 16px;
+    text-decoration: none;
+    margin-top: 10px;
+    border-radius: 5px;
+    transition: transform 0.3s, background-color 0.3s;
+}
+.listen-btn:hover {
+    background-color: #e3e7eb;
+    transform: scale(1.1);
+}
+
+/* Footer */
+footer {
+    background-color: #222;
+    color: rgb(231, 229, 237);
+    text-align: center;
+    padding: 20px;
+    margin-top: 30px;
+}
+footer a {
+    color: #ffcc00;
+    text-decoration: none;
+    padding: 5px 10px;
+}
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* Loader */
+#loader {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 24px;
+    color: #ffcc00;
+    z-index: 1001;
+}
+
+/* Back to Top Button */
+#back-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #ffcc00;
+    color: black;
+    border: none;
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+}
+
+/* Dark Mode Toggle Button */
+#dark-mode-toggle {
+    position: fixed;
+    bottom: 60px;
+    right: 20px;
+    background-color: #ffcc00;
+    color: black;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 1000;
+}
