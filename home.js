@@ -80,3 +80,43 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+// Handle Contact Form Submission
+const contactForm = document.querySelector('.contact-form');
+const popup = document.getElementById('popup');
+const closeBtn = document.querySelector('.close-btn');
+const closePopupBtn = document.getElementById('close-popup');
+
+contactForm.addEventListener('submit', (event) => {
+    event.preventDefault(); // Prevent form submission
+
+    // Get form values
+    const name = contactForm.querySelector('#name').value.trim();
+    const email = contactForm.querySelector('#email').value.trim();
+    const message = contactForm.querySelector('#message').value.trim();
+
+    if (name && email && message) {
+        // Show the popup
+        popup.style.display = 'flex';
+
+        // Reset the form after submission
+        contactForm.reset();
+    } else {
+        alert('يرجى ملء جميع الحقول.');
+    }
+});
+
+// Close the popup when clicking the close button or outside the popup
+closeBtn.addEventListener('click', () => {
+    popup.style.display = 'none';
+});
+
+closePopupBtn.addEventListener('click', () => {
+    popup.style.display = 'none';
+});
+
+// Close the popup when clicking outside of it
+window.addEventListener('click', (event) => {
+    if (event.target === popup) {
+        popup.style.display = 'none';
+    }
+});
